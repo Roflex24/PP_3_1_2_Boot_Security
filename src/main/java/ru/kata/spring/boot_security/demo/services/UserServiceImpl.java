@@ -23,7 +23,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    //@Transactional
     public void addUser(User user) {
         User userFromDB = userRepository.findByUsername(user.getUsername());
         if (userFromDB == null) {
@@ -33,13 +32,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    //@Transactional(readOnly = true)
     public User getUserById(Long id) {
         return userRepository.getOne(id);
     }
 
     @Override
-    //@Transactional
     public void updateUserById(User user) {
         if (user.getPassword().isEmpty()) {
             user.setPassword(userRepository.findByUsername(user.getUsername()).getPassword());
@@ -50,7 +47,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    //@Transactional
     public void deleteUserById(Long id) {
         if (userRepository.findById(id).isPresent()) {
             userRepository.deleteById(id);
@@ -58,19 +54,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    //@Transactional(readOnly = true)
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    //@Transactional(readOnly = true)
     public User getUserByName(String username) {
         return userRepository.findByUsername(username);
     }
 
     @Override
-    //@Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = getUserByName(username);
         if (user == null) {
