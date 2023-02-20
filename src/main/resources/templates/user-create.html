@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create User</title>
+</head>
+<body>
+<h1>Create user</h1>
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
+    <p>
+        <label for="username">username:</label>
+        <input type="text" required th:field="*{username}" id="username" placeholder="name">
+    </p>
+    <p>
+        <label for="username">first name:</label>
+        <input type="text" required th:field="*{firstName}" id="first name" placeholder="first name">
+    </p>
+    <p>
+        <label for="username">last name:</label>
+        <input type="text" required th:field="*{lastName}" id="last name" placeholder="last name">
+    </p>
+    <p>
+        <label for="age">age:</label>
+        <input type="text" required th:field="*{age}" id="age" placeholder="age">
+    </p>
+    <p>
+        <label for="email">email:</label>
+        <input type="text" th:field="*{email}" id="email" placeholder="email">
+    </p>
+    <p>
+        <label for="password">password:</label>
+        <input type="password" required th:field="*{password}" id="password" placeholder="password">
+    </p>
+    role:
+    <p>
+        <input type="checkbox" id="user" name="roles" value="2" checked><label for="user"> User</label>
+        <br/>
+        <input type="checkbox" id="admin" name="roles" value="1"><label for="admin"> Admin</label>
+    </p>
+    <input type="submit" value="Add new user"/>
+</form>
+<br/>
+</body>
+</html>

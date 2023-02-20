@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<h1>User details</h1>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Roles</th>
+    </tr>
+    <tr>
+        <td th:utext="${user.id}">Id</td>
+        <td th:utext="${user.username}">Username</td>
+        <td th:utext="${user.firstName}">Firstname</td>
+        <td th:utext="${user.lastName}">Lastname</td>
+        <td th:utext="${user.age}">Age</td>
+        <td th:utext="${user.email}" >Email</td>
+        <td><span th:each="roles : ${user.getRoles()}" th:utext="${#strings.substringAfter(roles.getName(), 'ROLE_')} + ' '">Roles</span></td>
+    </tr>
+</table>
+</body>
+</html>

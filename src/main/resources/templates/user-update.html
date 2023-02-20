@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+</head>
+<body>
+<h1>Edit user</h1>
+<form th:method="PATCH" th:action="@{/admin/{id}(id=${user.id})}" th:object="${user}">
+    <p>
+        <label for="username">username:</label>
+        <input type="text" required th:field="*{username}" id="username">
+    </p>
+    <p>
+        <label for="firstname">firstname:</label>
+        <input type="text" required th:field="*{firstName}" id="firstname">
+    </p>
+    <p>
+        <label for="lastname">lastname:</label>
+        <input type="text" required th:field="*{lastName}" id="lastname">
+    </p>
+    <p>
+        <label for="age">age:</label>
+        <input type="text" required th:field="*{age}" id="age">
+    </p>
+    <p>
+        <label for="email">email:</label>
+        <input type="text" th:field="*{email}" id="email">
+    </p>
+    <p>
+        <label for="pw">Enter new password (if you WANT to CHANGE it) or keep this field blank (if you DON'T WANT to change):</label>
+        <input type="password" th:field="*{password}" id="pw" placeholder="password">
+    </p>
+    role:
+    <p>
+        <input type="checkbox" id="user" name="roles" value="2" checked><label for="user"> User</label>
+        <br/>
+        <input type="checkbox" id="admin" name="roles" value="1"><label for="admin"> Admin</label>
+    </p>
+
+    <input type="submit" value="Edit"/>
+</form>
+<br/>
+<form th:method="POST" th:action="@{/logout}">
+    <button type="submit">Log Out</button>
+</form>
+</body>
+</html>
