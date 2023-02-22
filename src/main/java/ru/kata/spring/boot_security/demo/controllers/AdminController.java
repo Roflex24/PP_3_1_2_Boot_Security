@@ -35,12 +35,14 @@ public class AdminController {
     @GetMapping("/createUser")
     public String showCreateUserPage(Model model) {
         model.addAttribute("user", new User());
+        model.addAttribute("roles", roleService.getAllRoles());
         return "user-create";
     }
 
     @GetMapping("/{id}/edit")
     public String showEditUserPage(@PathVariable Long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
+        model.addAttribute("roles", roleService.getAllRoles());
         return "user-update";
     }
 

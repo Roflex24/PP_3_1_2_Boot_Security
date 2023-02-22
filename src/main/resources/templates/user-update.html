@@ -31,11 +31,15 @@
         <label for="password">password</label>
         <input type="password" th:field="*{password}" id="password" placeholder="password">
     </p>
-    role:
     <p>
-        <input type="checkbox" id="user" name="roles" value="2" checked><label for="user"> User</label>
-        <br/>
-        <input type="checkbox" id="admin" name="roles" value="1"><label for="admin"> Admin</label>
+        <label>Roles:
+            <input type="checkbox" name="roleList"
+                   th:each="role : ${roles}"
+                   th:text="${role.name.replaceAll('ROLE_', '')}"
+                   th:value="${role.getId()}"
+                   th:field="*{roles}"
+            />
+        </label>
     </p>
 
     <input type="submit" value="Edit"/>
